@@ -1,0 +1,86 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+    
+    - name: Update manifest version
+      run: |
+        VERSION="${{ steps.get_version.outputs.VERSION }}"
+        VERSION_NUMBER="${VERSION#v}"  # Remove 'v' prefix
+        sed -i "s/\"version\": \".*\"/\"version\": \"$VERSION_NUMBER\"/" manifest.json
+    
+    - name: Create ZIP package
+      run: |
+        zip -r twitch-chat-overlay-${{ steps.get_version.outputs.VERSION }}.zip \
+          manifest.json \
+          content.js \
+          background.js \
+          inject-minimal.js \
+          cleanup-script.js \
+          popup.html \
+          popup.js \
+          popup.css \
+          overlay.css \
+          icon16.png \
+          icon48.png \
+          icon128.png
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Twitch Chat Overlay ${{ steps.get_version.outputs.VERSION }}
+        body: |
+          ## 🎉 Twitch Chat Overlay ${{ steps.get_version.outputs.VERSION }}
+          
+          ### インストール方法 / Installation
+          
+          1. 下の **twitch-chat-overlay-${{ steps.get_version.outputs.VERSION }}.zip** をダウンロード
+          2. ZIPファイルを解凍
+          3. Chromeで `chrome://extensions/` を開く
+          4. 右上の「デベロッパーモード」を有効化
+          5. 「パッケージ化されていない拡張機能を読み込む」をクリック
+          6. 解凍したフォルダを選択
+          
+          ---
+          
+          1. Download **twitch-chat-overlay-${{ steps.get_version.outputs.VERSION }}.zip** below
+          2. Extract the ZIP file
+          3. Open `chrome://extensions/` in Chrome
+          4. Enable "Developer mode" in the top right
+          5. Click "Load unpacked"
+          6. Select the extracted folder
+          
+          ### 変更点 / Changes
+          
+          - See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details
+        draft: false
+        prerelease: false
+    
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./twitch-chat-overlay-${{ steps.get_version.outputs.VERSION }}.zip
+        asset_name: twitch-chat-overlay-${{ steps.get_version.outputs.VERSION }}.zip
+        asset_content_type: application/zip

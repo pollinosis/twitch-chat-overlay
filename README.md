@@ -2,6 +2,16 @@
 
 A Chrome extension that displays Twitch chat messages as a customizable overlay on the video player.
 
+## 🚀 Installation
+
+### Quick Install (Recommended)
+1. Download the latest release from [Releases](https://github.com/1kaguya/twitch-chat-overlay/releases)
+2. Extract the ZIP file
+3. Open `chrome://extensions/` in Chrome
+4. Enable "Developer mode"
+5. Click "Load unpacked" and select the extracted folder
+
+For detailed instructions, see [INSTALL.md](./INSTALL.md)
 
 ## ✨ Features
 
