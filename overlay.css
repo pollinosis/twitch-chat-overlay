@@ -1,0 +1,113 @@
+#twitch-chat-overlay-container {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  max-width: 400px;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+#twitch-chat-overlay-container.draggable {
+  pointer-events: auto;
+  cursor: move;
+  border-color: rgba(145, 71, 255, 0.5);
+}
+
+#twitch-chat-overlay-container.dragging {
+  border-color: rgba(145, 71, 255, 1);
+  box-shadow: 0 4px 20px rgba(145, 71, 255, 0.3);
+}
+
+.overlay-drag-handle {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(135deg, rgba(145, 71, 255, 0.8), rgba(145, 71, 255, 0.6));
+  border-radius: 4px 4px 0 0;
+  cursor: move;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  pointer-events: auto;
+}
+
+#twitch-chat-overlay-container:hover .overlay-drag-handle {
+  opacity: 1;
+}
+
+.overlay-drag-handle::before {
+  content: "⋮⋮⋮";
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.overlay-position-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.overlay-position-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.overlay-position-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.overlay-position-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.chat-message {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+  word-wrap: break-word;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.chat-message.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chat-username {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.chat-text {
+  color: #ffffff;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.chat-message:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}

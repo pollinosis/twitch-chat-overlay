@@ -1,0 +1,139 @@
+body {
+  width: 350px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e0e10;
+  color: #efeff1;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  color: #9147ff;
+  text-align: center;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #adadb8;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-container input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.toggle-label {
+  color: #efeff1;
+  font-size: 16px;
+}
+
+select, input[type="range"] {
+  width: 100%;
+  padding: 8px;
+  background-color: #18181b;
+  border: 1px solid #3a3a3d;
+  color: #efeff1;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select:focus, input[type="range"]:focus {
+  outline: none;
+  border-color: #9147ff;
+}
+
+input[type="range"] {
+  padding: 0;
+  height: 6px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #9147ff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #9147ff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+#opacityValue, #fontSizeValue, #maxMessagesValue {
+  display: inline-block;
+  margin-left: 10px;
+  color: #9147ff;
+  font-weight: bold;
+}
+
+#saveButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #9147ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#saveButton:hover {
+  background-color: #7c2cff;
+}
+
+#saveButton:active {
+  background-color: #5c1ccc;
+}
+
+.save-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #00d95f;
+  color: #0e0e10;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.save-message.show {
+  opacity: 1;
+}
+
+.info-box {
+  background-color: rgba(145, 71, 255, 0.1);
+  border: 1px solid rgba(145, 71, 255, 0.3);
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 13px;
+  color: #efeff1;
+  line-height: 1.4;
+}

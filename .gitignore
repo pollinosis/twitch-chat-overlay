@@ -1,0 +1,126 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+*.zip
+*.crx
+dist/
+build/
+out/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Claude AI
+.claude/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Chrome extension private keys
+*.pem
+key.pem
+*.key
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output
+*.lcov
+.jest/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Personal notes and docs
+notes.txt
+TODO.txt
+personal/
+private/
+*.todo
+*.notes
+
+# Backup files
+*.bak
+*.backup
+*_backup/
+backup/
+backups/
+*.old
+*.orig
+
+# Chrome Web Store submission files (keep these private)
+STORE_DESCRIPTION.md
+REMOTE_CODE_JUSTIFICATION.md
+PACKAGING_GUIDE.md
+store-assets/
+promotional-images/
+
+# Screenshots (uncomment if you want to include them in repo)
+# screenshots/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Mac specific
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows specific
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux specific
+.directory
+.Trash-*
+.nfs*
